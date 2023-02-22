@@ -33,5 +33,5 @@ You can contribute by suggest a new free API provider to fetch subdomains from! 
 Subfree was inspired by a variety of open-source subdomain enumeration tools, including [OneForAll](https://github.com/shmilylty/OneForAll) and [Sublist3r](https://github.com/aboul3la/Sublist3r).
 
 ## To-do ✅
-[] Adding More Resources
-[] Overall Improvments
+- [ ] Adding More Resources
+- [ ] Overall Improvments
