@@ -1,5 +1,13 @@
 #!/bin/bash
 
+echo "
+               __    ____             
+   _______  __/ /_  / __/_______  ___ 
+  / ___/ / / / __ \/ /_/ ___/ _ \/ _ \
+ (__  ) /_/ / /_/ / __/ /  /  __/  __/
+/____/\__,_/_.___/_/ /_/   \___/\___/ 
+                                      @sl4x0
+"
 # Set the domain name
 domain=$1
 
@@ -20,13 +28,16 @@ https://dns.bufferover.run/dns?q=.$domain
 https://urlscan.io/api/v1/search/?q=$domain
 https://synapsint.com/report.php -d 'name=http%3A%2F%2F$domain'
 https://jldc.me/anubis/subdomains/$domain
-https://sonar.omnisint.io/subdomains/$domain" | xargs -n 1 -P 20 -I {} sh -c "curl -s {} | grep -o -E '([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\.$domain'"
+https://sonar.omnisint.io/subdomains/$domain" | xargs -n 1 -P 20 -I {} sh -c "curl -s {} | grep -o -E '([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\.$domain'" > tmp.txt
 
 # Clean up the output by removing duplicates and sorting the lines alphabetically
-sort -u tmp.txt -o tmp.txt
+sort -u tmp.txt -o sorted_subs.txt
 
-# Print the results
-cat tmp.txt
+# Save the results to a file
+cat sorted_subs.txt > subs.txt
 
-# Clean up the temporary file
-rm tmp.txt
+# Print a message indicating that the results have been saved to the file
+echo "The subdomains have been saved to subs.txt"
+
+# Clean up the temporary files
+rm tmp.txt sorted_subs.txt
