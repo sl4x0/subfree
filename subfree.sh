@@ -21,6 +21,8 @@ urls=(
     "https://api.hackertarget.com/hostsearch/?q=$domain"
     "https://urlscan.io/api/v1/search/?q=$domain"
     "https://jldc.me/anubis/subdomains/$domain"
+    "https://www.google.com/search?q=site%3A$domain&num=100"
+    "https://www.bing.com/search?q=site%3A$domain&count=50"
 )
 
 # Temporary directory for storing files
@@ -37,19 +39,14 @@ end_time=$(date +%s)
 elapsed_time=$((end_time - start_time))
 echo "✅ Subdomains fetched successfully in $elapsed_time seconds!"
 
-# Clean up the output by removing duplicates and sorting the lines alphabetically
 echo "🧹 Cleaning up the output by removing duplicates and sorting the lines alphabetically..."
-start_time=$(date +%s)
 sort -u "$tmp_dir"/* -o "$tmp_dir/sorted_subs.txt"
-end_time=$(date +%s)
-elapsed_time=$((end_time - start_time))
-echo "✅ Output cleaned up in $elapsed_time seconds!"
 
 # Save the results to a file
-mv "$tmp_dir/sorted_subs.txt" "subs.txt"
+mv "$tmp_dir/sorted_subs.txt" "subfree.txt"
 
 # Print a message indicating that the results have been saved to the file
-echo "🎉 The subdomains have been saved to subs.txt"
+echo "🎉 The subdomains have been saved to subfree.txt"
 
 # Clean up the temporary directory
 rm -r "$tmp_dir"
