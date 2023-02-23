@@ -28,15 +28,22 @@ tmp_dir="$(mktemp -d)"
 
 # Fetch subdomains from various sources concurrently
 echo "🚀 Fetching subdomains from various sources concurrently..."
+start_time=$(date +%s)
 for url in "${urls[@]}"; do
     curl -s "$url" | grep -o -E '([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\.'"$domain"'' > "$tmp_dir/tmp.txt" &
 done
 wait
-echo "✅ Subdomains fetched successfully!"
+end_time=$(date +%s)
+elapsed_time=$((end_time - start_time))
+echo "✅ Subdomains fetched successfully in $elapsed_time seconds!"
 
 # Clean up the output by removing duplicates and sorting the lines alphabetically
 echo "🧹 Cleaning up the output by removing duplicates and sorting the lines alphabetically..."
+start_time=$(date +%s)
 sort -u "$tmp_dir"/* -o "$tmp_dir/sorted_subs.txt"
+end_time=$(date +%s)
+elapsed_time=$((end_time - start_time))
+echo "✅ Output cleaned up in $elapsed_time seconds!"
 
 # Save the results to a file
 mv "$tmp_dir/sorted_subs.txt" "subs.txt"
