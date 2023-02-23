@@ -25,6 +25,10 @@ Replace <domain> with the domain you want to enumerate subdomains for.
 Subfree uses free open API resources to fetch subdomains. This means that there is a limit to the number of subdomains that can be fetched per day. 
 If you encounter any issues with the tool, please try open an [issue](https://github.com/sl4x0/subfree/issues).
 
+## Keep updated
+```
+git pull
+```
 ## Contribution
 You can contribute by suggest a new free API provider to fetch subdomains from! Just fork it.
 
