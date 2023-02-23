@@ -1,5 +1,2 @@
 requests
 concurrent-futures
-argparse
-re
-tempfile
