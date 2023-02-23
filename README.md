@@ -26,7 +26,7 @@ Subfree uses free open API resources to fetch subdomains. This means that there 
 If you encounter any issues with the tool, please try open an [issue](https://github.com/sl4x0/subfree/issues).
 
 ## Keep updated
-```
+```console
 git pull
 ```
 ## Contribution
