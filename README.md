@@ -21,14 +21,37 @@ chmod +x subfree.sh
 
 To use Subfree, simply run the following command:
 
-```console
+```bash
 ./subfree.sh <domain>
 ```
-
 Replace <domain> with the domain you want to enumerate subdomains for.
 
 Subfree uses free open API resources to fetch subdomains. This means that there is a limit to the number of subdomains that can be fetched per day. 
 If you encounter any issues with the tool, please try open an [issue](https://github.com/sl4x0/subfree/issues).
+
+> You can use this tool as a function inside your automation script, eg:
+```console
+function subfree(){
+ # Input validation
+    if [ $# -ne 1 ] || ! echo "$1" | grep -E '^([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9])\.([a-zA-Z]{2,})$' >/dev/null; then
+        echo "Usage: $0 <domain>"
+        exit 1
+   ....
+   ....
+   ....
+    echo "🎉 The subdomains have been saved to subfree.txt"
+
+    # Clean up the temporary directory
+    rm -r "$tmp_dir"
+}
+
+#Enumerate subdomains using Subfree
+echo "🔍 Enumerating subdomains using Subfree..."
+subfree "$domain"
+cat subfree.txt > "$SUBDOMAINS_DIR/subfree.txt"
+rm -rf subfree.txt
+echo "✅ Done with Subfree enumeration."
+```
 
 ## Keep updated
 ```console
