@@ -2,6 +2,11 @@
 
 Subfree is a tool that allows you to fetch subdomains using free open API resources without the need for an API key. This tool is ideal for those who are just starting with subdomain enumeration and do not have access to expensive tools or resources.
 
+[![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
+
+[buymeacoffee]: https://www.buymeacoffee.com/sl4x0
+[buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png
+
 ## Installation
 
 Subfree can be installed using Git. Simply run the following command:
